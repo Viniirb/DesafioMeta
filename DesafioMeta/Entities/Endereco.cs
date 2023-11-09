@@ -12,5 +12,4 @@ public class Endereco
     public string? Estado { get;set; }
     public string? CodigoPostal { get; set; }
 
-    public virtual Pessoa Pessoa { get; set;}
 }

@@ -4,14 +4,14 @@
 
 namespace DesafioMeta.Migrations
 {
-    /// <inheritdoc />
+    /// Classe de Migration, responasvel por criar as tabelas no banco de dados, dar update no banco de dados, atualizar as tabelas se houver alguma requisição.
     public partial class DesafioMetaMigration : Migration
     {
-        /// <inheritdoc />
+        /// método responsavel por atualizar tabelas, e criar o banco de dados, utilizando comando add-Migration ( como ja existe os arquivos do migration, não a necessidade de cria-los novamente), update-database />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Pessoas",
+                name: "Pessoa",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -29,7 +29,7 @@ namespace DesafioMeta.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Enderecos",
+                name: "Endereco",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -49,25 +49,25 @@ namespace DesafioMeta.Migrations
                     table.ForeignKey(
                         name: "FK_Enderecos_Pessoas_PessoaId",
                         column: x => x.PessoaId,
-                        principalTable: "Pessoas",
+                        principalTable: "Pessoa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enderecos_PessoaId",
-                table: "Enderecos",
+                table: "Endereco",
                 column: "PessoaId");
         }
 
-        /// <inheritdoc />
+        /// Método responsavel por dar drop no banco de dados. utilizando o comando remove-migration />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Enderecos");
+                name: "Endereco");
 
             migrationBuilder.DropTable(
-                name: "Pessoas");
+                name: "Pessoa");
         }
     }
 }
